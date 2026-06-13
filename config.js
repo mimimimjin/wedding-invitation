@@ -83,8 +83,8 @@ const CONFIG = {
   // Supabase SQL 설정 후 Project URL과 anon/public key를 입력하세요.
   guestbook: {
     enabled: true,
-    supabaseUrl: "https://puipgexgrsyhzazjxrpi.supabase.co",
-    supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1aXBnZXhncnN5aHphemp4cnBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNTEzMDcsImV4cCI6MjA5NjkyNzMwN30.y2fnvmTSizqx2-G583zkkFnUHYfDf-6euIu4MvqKEZ4"
+    supabaseUrl: "https://jerzlsbokqhbtfzayxed.supabase.co",
+    supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Implcnpsc2Jva3FoYnRmemF5eGVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNDY4MTMsImV4cCI6MjA5NjkyMjgxM30.Iap0jOgxXTxAcisIRiN9YZo4GmI3BEn9PWIiVdYz95w"
   },
 
   // ── 링크 공유 시 나타나는 문구 ──
