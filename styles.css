@@ -742,6 +742,138 @@ a {
   color: #000;
 }
 
+/* ── Guestbook Section ── */
+.guestbook {
+  background: #fff;
+}
+
+.guestbook-header {
+  text-align: center;
+}
+
+.guestbook-setup,
+.guestbook-status {
+  padding: 18px;
+  border: 1px solid #eee;
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+  background: #fafafa;
+}
+
+.guestbook-form {
+  margin-bottom: 36px;
+}
+
+.guestbook-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.guestbook-form label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.guestbook-form label > span {
+  display: block;
+  margin-bottom: 5px;
+  color: #777;
+  font-size: 12px;
+}
+
+.guestbook-form input,
+.guestbook-form textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  color: #333;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+
+.guestbook-form textarea {
+  resize: vertical;
+  min-height: 104px;
+}
+
+.guestbook-form input:focus,
+.guestbook-form textarea:focus {
+  border-color: #888;
+}
+
+.guestbook-submit {
+  width: 100%;
+  padding: 13px;
+  border-radius: 4px;
+  color: #fff;
+  background: #333;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.guestbook-submit:disabled,
+.guestbook-delete:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.guestbook-list {
+  border-top: 1px solid #eee;
+}
+
+.guestbook-item {
+  position: relative;
+  padding: 20px 44px 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.guestbook-item-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.guestbook-item-heading strong {
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.guestbook-item-heading time {
+  color: #aaa;
+  font-size: 11px;
+}
+
+.guestbook-item p {
+  color: #555;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.guestbook-delete {
+  position: absolute;
+  top: 18px;
+  right: 0;
+  padding: 3px 0;
+  color: #aaa;
+  font-size: 11px;
+}
+
+.guestbook-delete:hover {
+  color: #555;
+}
+
 /* ── Footer ── */
 .footer {
   padding: 32px 28px;

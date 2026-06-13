@@ -146,6 +146,7 @@
     buildStoryText(c);
     buildLocation(c);
     buildAccount(c);
+    initGuestbook(c);
     initScrollAnimations();
     initModal();
 
@@ -568,6 +569,137 @@
         });
       });
     }
+  }
+
+  // ── Guestbook ──
+  function initGuestbook(c) {
+    const section = $('.guestbook');
+    if (!section || typeof GuestbookCore === 'undefined') return;
+
+    const config = c.guestbook || {};
+    if (config.enabled === false) {
+      section.style.display = 'none';
+      return;
+    }
+
+    const form = $('.guestbook-form', section);
+    const setup = $('.guestbook-setup', section);
+    const status = $('.guestbook-status', section);
+    const list = $('.guestbook-list', section);
+
+    if (!GuestbookCore.isGuestbookConfigured(config)) {
+      if (form) form.hidden = true;
+      if (status) status.hidden = true;
+      if (setup) setup.hidden = false;
+      return;
+    }
+
+    const client = GuestbookCore.createGuestbookClient(config);
+
+    async function loadEntries() {
+      if (status) {
+        status.hidden = false;
+        status.textContent = '방명록을 불러오는 중입니다.';
+      }
+      if (list) list.innerHTML = '';
+
+      try {
+        const entries = await client.list();
+        renderGuestbookEntries(entries, list, client, loadEntries);
+        if (status) {
+          status.hidden = entries.length > 0;
+          status.textContent = entries.length ? '' : '첫 번째 축하 메시지를 남겨주세요.';
+        }
+      } catch (error) {
+        if (status) status.textContent = error.message;
+      }
+    }
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const submit = $('.guestbook-submit', form);
+      const result = GuestbookCore.validateEntry({
+        name: $('#guestbook-name', form)?.value,
+        message: $('#guestbook-message', form)?.value,
+        password: $('#guestbook-password', form)?.value
+      });
+
+      if (!result.valid) {
+        showToast(Object.values(result.errors)[0]);
+        return;
+      }
+
+      if (submit) {
+        submit.disabled = true;
+        submit.textContent = '등록 중...';
+      }
+
+      try {
+        await client.create(result.value);
+        form.reset();
+        showToast('축하 메시지가 등록되었습니다');
+        await loadEntries();
+      } catch (error) {
+        showToast(error.message);
+      } finally {
+        if (submit) {
+          submit.disabled = false;
+          submit.textContent = '축하 메시지 남기기';
+        }
+      }
+    });
+
+    loadEntries();
+  }
+
+  function renderGuestbookEntries(entries, container, client, reload) {
+    if (!container) return;
+    container.innerHTML = '';
+
+    entries.forEach(entry => {
+      const item = document.createElement('article');
+      item.className = 'guestbook-item';
+
+      const heading = document.createElement('div');
+      heading.className = 'guestbook-item-heading';
+
+      const name = document.createElement('strong');
+      name.textContent = entry.name;
+
+      const date = document.createElement('time');
+      date.dateTime = entry.created_at;
+      date.textContent = GuestbookCore.formatEntryDate(entry.created_at);
+
+      const message = document.createElement('p');
+      message.textContent = entry.message;
+
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.className = 'guestbook-delete';
+      deleteButton.textContent = '삭제';
+      deleteButton.addEventListener('click', async () => {
+        const password = window.prompt('작성할 때 입력한 삭제 비밀번호 4자리를 입력해 주세요.');
+        if (password === null) return;
+        if (!/^\d{4}$/.test(password)) {
+          showToast('삭제 비밀번호는 숫자 4자리입니다');
+          return;
+        }
+
+        deleteButton.disabled = true;
+        try {
+          await client.deleteOwn(entry.id, password);
+          showToast('메시지가 삭제되었습니다');
+          await reload();
+        } catch (error) {
+          showToast(error.message);
+          deleteButton.disabled = false;
+        }
+      });
+
+      heading.append(name, date);
+      item.append(heading, message, deleteButton);
+      container.appendChild(item);
+    });
   }
 
   // ── Scroll Animations ──

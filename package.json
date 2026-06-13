@@ -1,0 +1,8 @@
+{
+  "name": "modern-minimal-wedding-invitation",
+  "private": true,
+  "scripts": {
+    "guestbook:admin": "node scripts/guestbook-admin.mjs",
+    "test": "node --test"
+  }
+}

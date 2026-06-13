@@ -79,6 +79,14 @@ const CONFIG = {
     ]
   },
 
+  // ── 방명록 ──
+  // Supabase SQL 설정 후 Project URL과 anon/public key를 입력하세요.
+  guestbook: {
+    enabled: true,
+    supabaseUrl: "https://puipgexgrsyhzazjxrpi.supabase.co",
+    supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB1aXBnZXhncnN5aHphemp4cnBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNTEzMDcsImV4cCI6MjA5NjkyNzMwN30.y2fnvmTSizqx2-G583zkkFnUHYfDf-6euIu4MvqKEZ4"
+  },
+
   // ── 링크 공유 시 나타나는 문구 ──
   kakaoShare: {
     jsKey: "",
