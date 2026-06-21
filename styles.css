@@ -140,18 +140,15 @@ a {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 40%,
-    rgba(0, 0, 0, 0.45) 100%
-  );
+  background: transparent;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  padding: 0 28px 60px;
+  padding: clamp(170px, 24svh, 220px) 28px 0;
   text-align: center;
-  color: #fff;
+  color: #8f2f27;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .hero-names {
@@ -193,7 +190,7 @@ a {
   transform: translateX(-50%);
   width: 1px;
   height: 32px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(143, 47, 39, 0.4);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
