@@ -145,7 +145,7 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: clamp(170px, 24svh, 220px) 28px 0;
+  padding: clamp(135px, 17svh, 170px) 28px 0;
   text-align: center;
   color: #8f2f27;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);

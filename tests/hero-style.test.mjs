@@ -22,7 +22,7 @@ test('hero content is positioned in the upper illustration space', () => {
   const overlay = rule('.hero-overlay');
 
   assert.match(overlay, /justify-content:\s*flex-start\s*;/);
-  assert.match(overlay, /padding:\s*clamp\([^;]+\)\s+28px\s+0\s*;/);
+  assert.match(overlay, /padding:\s*clamp\(135px,\s*17svh,\s*170px\)\s+28px\s+0\s*;/);
 });
 
 test('hero text uses an illustration-matching brick red', () => {
