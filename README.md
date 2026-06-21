@@ -58,3 +58,20 @@ npm test
 ```bash
 node --test
 ```
+
+## Node.js가 설치되지 않은 Mac에서 관리자 CLI 실행
+
+터미널에서 `node: command not found`가 표시되고 Codex 앱이 설치되어 있다면,
+Codex 앱에 포함된 Node.js로 관리자 CLI를 실행할 수 있습니다.
+
+방명록 목록 조회:
+
+```bash
+/Applications/Codex.app/Contents/Resources/node scripts/guestbook-admin.mjs list
+```
+
+방명록 ID로 삭제:
+
+```bash
+/Applications/Codex.app/Contents/Resources/node scripts/guestbook-admin.mjs delete 42
+```
