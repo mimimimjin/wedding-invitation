@@ -44,3 +44,27 @@ Expected: PASS.
 git add tests/hero-style.test.mjs styles.css
 git commit -m "fix: refine hero illustration overlay"
 ```
+
+### Task 2: Mobile Safari Vertical Position Correction
+
+**Files:**
+- Modify: `tests/hero-style.test.mjs`
+- Modify: `styles.css:140-151`
+
+**Step 1: Tighten the position regression test**
+
+`.hero-overlay`의 상단 패딩이 `clamp(135px, 17svh, 170px)`인지 검증한다.
+
+**Step 2: Run test to verify it fails**
+
+Run: `node --test tests/hero-style.test.mjs`
+Expected: FAIL because the current padding is `clamp(170px, 24svh, 220px)`.
+
+**Step 3: Apply the minimal CSS correction**
+
+상단 패딩만 `clamp(135px, 17svh, 170px) 28px 0`으로 변경한다.
+
+**Step 4: Verify tests and mobile layout**
+
+Run: `node --test`
+Expected: PASS. Then verify at a 390x844 viewport that the venue text ends above the illustrated heads.
