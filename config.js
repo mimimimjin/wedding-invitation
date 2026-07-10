@@ -3,15 +3,15 @@
  *
  * Edit the values below to customize your wedding invitation.
  * Image files should be placed in the corresponding images/ subfolders
- * using sequential filenames (1.jpg, 2.jpg, ...).
+ * using sequential filenames (11.jpg, 12.jpg, ...).
  * The code auto-detects images by trying sequential filenames.
  *
  * Image folder conventions:
- *   images/hero/1.jpg       - Main wedding photo (single file)
- *   images/story/1.jpg, ... - Story section photos (auto-detected)
- *   images/gallery/1.jpg, . - Gallery photos (auto-detected)
- *   images/location/1.jpg   - Venue/map image (single file)
- *   images/og/1.jpg         - Kakao share thumbnail (single file)
+ *   images/hero/11.jpg       - Main wedding photo (single file)
+ *   images/story/11.jpg, ... - Story section photos (auto-detected)
+ *   images/gallery/11.jpg, . - Gallery photos (auto-detected)
+ *   images/location/11.jpg   - Venue/map image (single file)
+ *   images/og/11.jpg         - Kakao share thumbnail (single file)
  */
 
 const CONFIG = {
