@@ -189,7 +189,7 @@
   function buildHero(c, dateInfo, timeText) {
     const heroImg = $('.hero-image');
     if (heroImg) {
-      heroImg.src = 'images/hero/11.jpg';
+      heroImg.src = 'images/hero/1.jpg';
       heroImg.alt = `${c.groom.name} & ${c.bride.name}`;
     }
 
@@ -506,7 +506,7 @@
       tel.innerHTML = `<a href="tel:${c.wedding.tel}">${c.wedding.tel}</a>`;
     }
     if (mapImg) {
-      mapImg.src = 'images/location/11.jpg';
+      mapImg.src = 'images/location/1.jpg';
       mapImg.alt = `${c.wedding.venue} 약도`;
     }
 
