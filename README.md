@@ -59,6 +59,23 @@ npm test
 node --test
 ```
 
+## Supabase 자동 깨우기
+
+무료 Supabase 프로젝트가 inactivity로 pause되지 않도록 GitHub Actions가
+하루 한 번 방명록 REST API를 조회합니다. 데이터는 수정하지 않고
+`guestbook_entries?select=id&limit=1`만 호출합니다.
+
+GitHub repository settings의 `Secrets and variables` > `Actions`에 다음
+repository secrets를 추가합니다.
+
+```text
+SUPABASE_URL=https://YOUR_PROJECT.supabase.co
+SUPABASE_ANON_KEY=YOUR_ANON_PUBLIC_KEY
+```
+
+설정 후 GitHub `Actions` 탭에서 `Supabase Keepalive` workflow를 수동 실행해
+초기 연결을 확인할 수 있습니다.
+
 ## Node.js가 설치되지 않은 Mac에서 관리자 CLI 실행
 
 터미널에서 `node: command not found`가 표시되고 Codex 앱이 설치되어 있다면,
