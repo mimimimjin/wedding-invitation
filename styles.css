@@ -169,18 +169,18 @@ a {
 }
 
 .hero-date {
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 0.12em;
-  opacity: 0.85;
-  margin-bottom: 4px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  opacity: 0.96;
+  margin-bottom: 10px;
 }
 
 .hero-venue {
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  opacity: 0.98;
 }
 
 .hero-scroll {
@@ -246,43 +246,77 @@ a {
   background: #fafafa;
 }
 
-.countdown-grid {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 20px;
+.countdown-header {
+  margin-bottom: 28px;
 }
 
-.countdown-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 56px;
+.countdown-card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 34px 22px 28px;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
 }
 
-.countdown-number {
-  font-size: 36px;
-  font-weight: 200;
-  color: #000;
-  letter-spacing: -0.02em;
-  line-height: 1;
+.countdown-month {
+  font-size: 28px;
+  font-weight: 300;
+  color: #525866;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
   font-variant-numeric: tabular-nums;
 }
 
-.countdown-unit {
-  font-size: 11px;
-  color: #999;
-  margin-top: 8px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 500;
+.countdown-weekdays,
+.countdown-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.countdown-weekdays {
+  gap: 12px 6px;
+  margin-bottom: 20px;
+}
+
+.countdown-weekday {
+  font-size: 14px;
+  font-weight: 300;
+  color: #9aa0ab;
+}
+
+.countdown-days {
+  gap: 14px 6px;
+}
+
+.countdown-day {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 300;
+  color: #555;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-day.is-empty {
+  visibility: hidden;
+}
+
+.countdown-day.is-wedding {
+  background: #9399a5;
+  color: #fff;
 }
 
 .countdown-dday {
-  font-size: 13px;
-  color: #999;
+  font-size: 14px;
+  color: #7b818d;
   font-weight: 400;
-  letter-spacing: 0.05em;
+  letter-spacing: -0.01em;
+  margin-top: 24px;
 }
 
 .countdown-calendar-buttons {
@@ -924,8 +958,24 @@ a {
     font-size: 38px;
   }
 
-  .countdown-number {
-    font-size: 42px;
+  .hero-date {
+    font-size: 18px;
+  }
+
+  .hero-venue {
+    font-size: 18px;
+  }
+
+  .countdown-card {
+    padding: 38px 36px 32px;
+  }
+
+  .countdown-month {
+    font-size: 32px;
+  }
+
+  .countdown-day {
+    font-size: 19px;
   }
 
   .gallery-grid {
@@ -946,8 +996,20 @@ a {
     font-size: 42px;
   }
 
-  .countdown-number {
-    font-size: 48px;
+  .hero-date {
+    font-size: 19px;
+  }
+
+  .hero-venue {
+    font-size: 19px;
+  }
+
+  .countdown-card {
+    max-width: 560px;
+  }
+
+  .countdown-month {
+    font-size: 34px;
   }
 }
 

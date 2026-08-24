@@ -56,23 +56,14 @@
 
   <!-- ====== Countdown ====== -->
   <section class="section countdown fade-in">
-    <div class="countdown-grid">
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-days">0</span>
-        <span class="countdown-unit">Days</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-hours">0</span>
-        <span class="countdown-unit">Hours</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-mins">0</span>
-        <span class="countdown-unit">Min</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-secs">0</span>
-        <span class="countdown-unit">Sec</span>
-      </div>
+    <div class="countdown-header">
+      <div class="section-label">Our Wedding Day</div>
+      <div class="section-title">예식 일정</div>
+    </div>
+    <div class="countdown-card">
+      <div class="countdown-month" id="calendar-display-month">2026.10</div>
+      <div class="countdown-weekdays" id="calendar-weekdays"></div>
+      <div class="countdown-days" id="calendar-days"></div>
     </div>
     <div class="countdown-dday"></div>
     <div class="countdown-calendar-buttons">
@@ -254,6 +245,7 @@
 <!-- Scripts -->
 <script src="config.js"></script>
 <script src="guestbook-core.js"></script>
+<script src="calendar-utils.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

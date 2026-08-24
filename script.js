@@ -142,7 +142,7 @@
     // Build non-image sections immediately
     buildHero(c, dateInfo, timeText);
     buildInvitation(c, dateInfo, timeText);
-    buildCountdown(c, dateInfo);
+    buildCountdown(c, dateInfo, timeText);
     buildStoryText(c);
     buildLocation(c);
     buildAccount(c);
@@ -233,47 +233,42 @@
   }
 
   // ── Countdown ──
-  function buildCountdown(c, dateInfo) {
+  function buildCountdown(c, dateInfo, timeText) {
+    const calendarUtils = window.CalendarUtils;
     const [h, m] = c.wedding.time.split(':').map(Number);
     const weddingDate = new Date(dateInfo.date);
     weddingDate.setHours(h, m, 0, 0);
+    const monthEl = $('#calendar-display-month');
+    const weekdaysEl = $('#calendar-weekdays');
+    const daysEl = $('#calendar-days');
+    const ddayEl = $('.countdown-dday');
 
-    function update() {
-      const now = new Date();
-      const diff = weddingDate - now;
+    if (calendarUtils && monthEl && weekdaysEl && daysEl) {
+      const model = calendarUtils.createCalendarModel(c.wedding.date);
 
-      const daysEl = $('#cd-days');
-      const hoursEl = $('#cd-hours');
-      const minsEl = $('#cd-mins');
-      const secsEl = $('#cd-secs');
-      const ddayEl = $('.countdown-dday');
+      monthEl.textContent = model.displayMonth;
+      weekdaysEl.innerHTML = model.weekdays
+        .map(label => `<span class="countdown-weekday">${label}</span>`)
+        .join('');
+      daysEl.innerHTML = model.weeks
+        .flat()
+        .map(cell => {
+          if (!cell) {
+            return '<span class="countdown-day is-empty" aria-hidden="true"></span>';
+          }
 
-      if (diff <= 0) {
-        if (daysEl) daysEl.textContent = '0';
-        if (hoursEl) hoursEl.textContent = '0';
-        if (minsEl) minsEl.textContent = '0';
-        if (secsEl) secsEl.textContent = '0';
-        if (ddayEl) ddayEl.textContent = '결혼식 당일입니다';
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      if (daysEl) daysEl.textContent = days;
-      if (hoursEl) hoursEl.textContent = hours;
-      if (minsEl) minsEl.textContent = mins;
-      if (secsEl) secsEl.textContent = secs;
-
-      if (ddayEl) {
-        ddayEl.textContent = `결혼식까지 D-${days}`;
-      }
+          const className = cell.isWeddingDay ? 'countdown-day is-wedding' : 'countdown-day';
+          const ariaLabel = cell.isWeddingDay
+            ? `${model.displayDate} 결혼식 날짜`
+            : `${model.year}년 ${model.month}월 ${cell.day}일`;
+          return `<span class="${className}" aria-label="${ariaLabel}">${cell.day}</span>`;
+        })
+        .join('');
     }
 
-    update();
-    setInterval(update, 1000);
+    if (ddayEl) {
+      ddayEl.textContent = `${dateInfo.year}년 ${dateInfo.month}월 ${dateInfo.day}일 ${dateInfo.dayName}요일 ${timeText}`;
+    }
 
     // Calendar buttons
     const gcalBtn = $('#btn-gcal');
