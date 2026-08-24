@@ -143,9 +143,9 @@ a {
   background: transparent;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
-  padding: clamp(135px, 17svh, 170px) 28px 0;
+  padding: 0 28px clamp(78px, 10svh, 110px);
   text-align: center;
   color: #8f2f27;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.55);
@@ -173,7 +173,7 @@ a {
   font-weight: 400;
   letter-spacing: 0.09em;
   opacity: 0.96;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .hero-venue {
